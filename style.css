@@ -1,0 +1,116 @@
+/* Basic styles for body and container */
+body {
+    font-family: 'Poppins', sans-serif; /* Use a more stylish font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+/* Container styles with advanced design */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 700px;
+    position: relative;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Message styling */
+.message h1 {
+    font-size: 3.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    animation: bounceIn 1s ease-out;
+}
+
+.message p {
+    font-size: 1.6rem;
+    color: #666;
+    margin-top: 0;
+    animation: slideIn 1s ease-out;
+}
+
+/* Center the buttons horizontally */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Button styles with advanced effects */
+button {
+    font-size: 1.2rem;
+    padding: 18px 36px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s, filter 0.3s;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Add a subtle pulse animation to the buttons */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Custom button styles */
+#yes-btn {
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
+    color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    animation: pulse 1s infinite;
+}
+
+#yes-btn:hover {
+    background: linear-gradient(45deg, #45a049, #1b5e20);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+
+#no-btn {
+    background: linear-gradient(45deg, #f44336, #c62828);
+    color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#no-btn:hover {
+    background: linear-gradient(45deg, #d32f2f, #b71c1c);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+
+

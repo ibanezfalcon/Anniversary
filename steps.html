@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Anniversary Plan</title>
+    <style>
+       body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle, #ff9a9e, #fad0c4);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 0;
+    animation: fadeInContainer 2s ease-out forwards;
+    text-align: center;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.step {
+    background: linear-gradient(145deg, #ffffff, #d1d9e6);
+    border-radius: 20px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInStep 1s ease-out forwards;
+   
+}
+
+@keyframes fadeInStep {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step img {
+    width: 60px;
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.step:hover img {
+    transform: scale(1.1);
+}
+
+.step-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3333cc;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step-description {
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.details {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666666;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.details.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.details-show {
+    cursor: pointer;
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.details-show:hover {
+    color: #0056b3;
+}
+
+.map {
+    margin-top: 10px;
+    border: none;
+    border-radius: 0;
+}
+
+.map iframe {
+    width: 100%;
+    height: 200px;
+}
+
+.love-story-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    margin: 20px;
+  
+    padding: 10px;
+    background: #ff6f61;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    animation: float 3s ease-in-out infinite;
+}
+
+.love-story-button:hover {
+    background: #ff4c4c;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.heart-float {
+    position: absolute;
+    font-size: 16px;
+    color: #ff4c4c;
+    pointer-events: none;
+    animation: heart-float 6s ease-in-out infinite;
+}
+
+@keyframes heart-float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-30px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navigation-buttons button {
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin: 0 10px;
+}
+
+.navigation-buttons button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.navigation-buttons button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.outfit-color {
+    display: none;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #444;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.outfit-color.show {
+    display: block;
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+    .step {
+        padding: 15px;
+    }
+
+    .map iframe {
+        height: 200px;
+    }
+
+    .love-story-button {
+        width: 180px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="header">Here's Our Plan</div>
+    <div class="container">
+        <div class="step-container" id="step1">
+            <div class="step">
+                <div class="step-number">Step 1</div>
+                <img src="https://img.icons8.com/doodle/80/000000/t-shirt.png" alt="Outfit">
+                <div class="step-description">Buy matching outfits</div>
+                <div class="details" id="details1">
+                    <p>We’ll start our special day by picking out matching outfits that we both adore. Let’s visit our favorite store and explore different themes and color schemes that suit us. It’ll be a fun and stylish way to kick off our anniversary celebration!</p>
+                    <div class="outfit-color" id="color1">
+                        <p>Theme: Brown and Black Jackets</p>
+                        <div style="background-color: #6f4f28;" class="color-swatch"></div> <!-- Brown -->
+                        <div style="background-color: #000000;" class="color-swatch"></div> <!-- Black -->
+                    </div>
+                </div>
+                <span class="details-show" id="toggle1" onclick="toggleDetails('details1', 'toggle1')">See Details</span>
+            </div>
+        </div>
+
+        <div class="step-container" id="step2" style="display: none;">
+            <div class="step">
+                <div class="step-number">Step 2</div>
+                <img src="https://img.icons8.com/doodle/80/000000/camera.png" alt="Photography">
+                <div class="step-description">Go to a photography studio</div>
+                <div class="details" id="details2">
+                    <p>Next, we’ll head to a local photography studio for a memorable photo session. We’ll dress in our new outfits and create beautiful memories together. We can choose a package that includes prints or digital copies to keep these moments forever.</p>
+                    <p><strong>Address:</strong> Caimito Place, Caimito Rd, Caloocan City</p>
+                    <!-- Embed Google Map -->
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d865.7263146375519!2d120.98036945172148!3d14.711257712107795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b1f2d7d4d8f7%3A0x4564c8e8f3c3b453!2sCaimito%20Place!5e0!3m2!1sen!2sus!4v1692658033424!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <span class="details-show" id="toggle2" onclick="toggleDetails('details2', 'toggle2')">See Details</span>
+            </div>
+        </div>
+
+        <div class="step-container" id="step3" style="display: none;">
+            <div class="step">
+                <div class="step-number">Step 3</div>
+                <img src="food.png" alt="Restaurant">
+                <div class="step-description">Have dinner at Blake's Restaurant</div>
+                <div class="details" id="details3">
+                    <p>Our final stop will be a romantic dinner at Blake's Restaurant. We’ll savor delicious dishes, enjoy each other’s company, and celebrate our special day. Don’t forget to check out the dessert menu – it’s the perfect way to end our anniversary celebration on a sweet note!</p>
+                    <p><strong>Address:</strong> SM North EDSA, Quezon City</p>
+                    <!-- Embed Google Map -->
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.764218991594!2d121.03456511521745!3d14.659394181291373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9d9d5b5f7cf%3A0x6e039ac9b9f6df05!2sBlake%27s%20Restaurant!5e0!3m2!1sen!2sus!4v1692658000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <span class="details-show" id="toggle3" onclick="toggleDetails('details3', 'toggle3')">See Details</span>
+            </div>
+        </div>
+
+        <div class="step-container" id="step4" style="display: none;">
+            <div class="step">
+                <div class="step-number">Step 4</div>
+                <img src="baking.png" alt="Baking">
+                <div class="step-description">IDIM DIY Bakery</div>
+                <div class="details" id="details4">
+                    <p>End the day with a fun DIY baking session. We’ll bake some delicious treats together, experimenting with recipes and flavors. This is a sweet way to wrap up our special day and enjoy some homemade goodies.</p>
+                    <p><strong>Address:</strong> SM North EDSA, Quezon City</p>
+                    <!-- Embed Google Map -->
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.764218991594!2d121.03456511521745!3d14.659394181291373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9d9d5b5f7cf%3A0x6e039ac9b9f6df05!2sIDIM%20DIY%20Bakery!5e0!3m2!1sen!2sus!4v1692658000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <span class="details-show" id="toggle4" onclick="toggleDetails('details4', 'toggle4')">See Details</span>
+            </div>
+        </div>
+        <div class="navigation-buttons">
+            <button id="prevBtn" onclick="changeStep(-1)">Previous</button>
+            <button id="nextBtn" onclick="changeStep(1)">Next</button>
+        </div>
+       
+
+        <a href="love-story.html" class="love-story-button">
+            <span>View Our Love Story</span>
+            <span class="heart-float" style="top: 10px; left: 10px;">❤️</span>
+            <span class="heart-float" style="top: 25px; right: 10px;">❤️</span>
+            <span class="heart-float" style="bottom: 10px; left: 25px;">❤️</span>
+            <span class="heart-float" style="bottom: 25px; right: 25px;">❤️</span>
+        </a>
+    </div>
+
+    <script>
+   let currentStep = 1;
+const totalSteps = 4;
+
+function showStep(stepNumber) {
+    for (let i = 1; i <= totalSteps; i++) {
+        const stepContainer = document.getElementById(`step${i}`);
+        if (stepContainer) {
+            stepContainer.style.display = (i === stepNumber) ? 'block' : 'none';
+        }
+    }
+    updateButtons();
+}
+
+function changeStep(direction) {
+    const newStep = currentStep + direction;
+    if (newStep >= 1 && newStep <= totalSteps) {
+        currentStep = newStep;
+        showStep(currentStep);
+    }
+}
+
+function updateButtons() {
+    document.getElementById('prevBtn').style.display = (currentStep === 1) ? 'none' : 'inline-block';
+    document.getElementById('nextBtn').style.display = (currentStep === totalSteps) ? 'none' : 'inline-block';
+}
+
+function toggleDetails(detailsId, toggleId) {
+    const details = document.getElementById(detailsId);
+    const toggle = document.getElementById(toggleId);
+    if (details.classList.contains('show')) {
+        details.classList.remove('show');
+        toggle.textContent = 'See Details';
+        if (detailsId === 'details1') {
+            document.getElementById('color1').classList.remove('show');
+        }
+    } else {
+        details.classList.add('show');
+        toggle.textContent = 'Hide Details';
+        if (detailsId === 'details1') {
+            document.getElementById('color1').classList.add('show');
+        }
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    showStep(currentStep);
+});
+
+    </script>
+</body>
+</html>

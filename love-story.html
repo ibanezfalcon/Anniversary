@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story Timeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: radial-gradient(circle, rgba(255, 154, 162, 1) 0%, rgba(250, 208, 196, 1) 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 48px;
+            color: #ff6f61;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 32px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .timeline {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #ff6f61;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding: 15px;
+            width: 45%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) {
+            float: left;
+            text-align: right;
+            clear: both;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            float: right;
+            text-align: left;
+            clear: both;
+            position: relative;
+        }
+
+        .date {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ff6f61;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .month {
+            margin-right: 8px;
+        }
+
+        .year {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .timeline-item:hover .date {
+            color: #d9534f;
+        }
+
+        .timeline-item .description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: calc(100% + 30px); /* Extend the line to connect with the vertical line */
+            height: 1px;
+            background: #ff6f61;
+            transform: translateX(-50%);
+        }
+
+        .back-button {
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            font-size: 20px;
+            background: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 600px) {
+            .timeline-item {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+                border: none;
+            }
+
+            .timeline-item:nth-child(odd)
+            
+            .timeline-item:nth-child(even) {
+                float: none;
+                clear: none;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .timeline-item::after {
+                display: none;
+            }
+
+            .timeline-item img {
+                width: 50%;
+                height: 50%;
+            }
+
+            .date {
+                font-size: 18px;
+                flex-direction: column;
+            }
+
+            .month {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+
+            .year {
+                font-size: 18px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="steps.html" class="back-button">Back</a>
+    <h1>Our Love Story</h1>
+    <h2>Dan & Yelle</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">June</span>
+                <span class="year">2021</span>
+            </div>
+            <img src="talking.png" width="150" height="150" alt="Event 1">
+            <div class="description">
+                Before I preached, we talked for the first time
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">July</span>
+                <span class="year">2021</span>
+            </div>
+            <img src="convo.png" height="120" width="120" alt="Event 2">
+            <div class="description">
+                You asked for help to surprise your disciple
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">August</span>
+                <span class="year">2021</span>
+            </div>
+            <img src="bestfriend.png" height="120" width="120" alt="Event 3">
+            <div class="description">
+                We officially became best friends on August 5, to be exact
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">September</span>
+                <span class="year">2021</span>
+            </div>
+            <img src="friendship.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is our first friend-monthsary
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">November</span>
+                <span class="year">2021</span>
+            </div>
+            <img src="late night talks.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                We often have late-night talks
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">December</span>
+                <span class="year">2021</span>
+            </div>
+            <img src="confession.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                I have admitted that I have feelings for you
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">January</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="miss you.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                We didn't talk for a week because of fasting. I missed you a lot during that time
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">February</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="friendsary.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                You gave me a gift of a pink cup and a customized tumbler
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">March</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="push away.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                These are the times when you constantly push me away
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">April</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="outing.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This outing made me feel even closer to you
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">May</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="badminton.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                We played badminton with friends from church during this time
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">June</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="birthday.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                Of course, the highlight here is your birthday. But I remember that you didn't celebrate it on the exact day because of some issues, and it made you cry
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">July</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="struggling.png"  height="120" width="120" alt="Event 4">
+            <div class="description">
+                This month, I've struggled with my feelings for you due to various obstacles
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">September</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="lolo travel.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when we went to Venice Plaza with lolo
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">December</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="pampanga.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when your family took me to Pampanga for the first time
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">January</span>
+                <span class="year">2023</span>
+            </div>
+            <img src="flowers.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when, at midnight on New Year's, I brought flowers to you
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">February</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="vikings eatings.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when we celebrated my birthday at Vikings SM North
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">June</span>
+                <span class="year">2023</span>
+            </div>
+            <img src="yelle 26.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when we celebrated your birthday at Tita's house and your turning 26
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">July</span>
+                <span class="year">2022</span>
+            </div>
+            <img src="concert.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This month is when you were going to say yes to my courtship, but it's also my mom’s birthday
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">August</span>
+                <span class="year">2023</span>
+            </div>
+            <img src="you say yes.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when we went to the floating restaurant and you said yes to my courtship
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">July</span>
+                <span class="year">2023</span>
+            </div>
+            <img src="concert.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This month is when you were going to say yes to my courtship, but it's also my mom’s birthday
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span >Fast forward to 2024</span>
+                <span class="month">January</span>
+                <span class="year">2023</span>
+            </div>
+            <img src="new year.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                This is the month when we celebrated New Year as an official couple
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="date">
+                <span class="month">August</span>
+                <span class="year">2024</span>
+            </div>
+            <img src="anniversary.png" height="120" width="120" alt="Event 4">
+            <div class="description">
+                And today, August 21, marks our special anniversary. Every moment with you has been a cherished part of this beautiful journey we share
+            </div>
+        </div>
+    </div>
+</body>
+</html>
