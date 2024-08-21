@@ -213,6 +213,44 @@
                 transform: translateX(0);
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -466,8 +504,54 @@
             </div>
         </div>
     </div>
-    <audio src="MYMP - For All Of My Life (Official Lyric Video).mp3" autoplay loop>
+    <!-- <audio src="MYMP - For All Of My Life (Official Lyric Video).mp3" autoplay loop>
         Your browser does not support the audio element.
-    </audio>
+    </audio> -->
+ <!-- Modal for Audio -->
+ <div id="audioModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Enjoy Our Love Story Music</h2>
+        <p>Would you like to play the background music for our love story?</p>
+        <button id="playAudio">Play Music</button>
+    </div>
+</div>
+
+<audio id="background-audio" src="MYMP - For All Of My Life (Official Lyric Video).mp3" loop>
+    Your browser does not support the audio element.
+</audio>
+
+
+<script>
+    // Modal
+    var modal = document.getElementById("audioModal");
+        var btn = document.getElementById("playAudio");
+        var span = document.getElementById("closeModal");
+        var audio = document.getElementById("background-audio");
+
+        // Open the modal automatically when the page loads
+        window.onload = function() {
+            modal.style.display = "block";
+        }
+
+        // Play audio when button is clicked
+        btn.onclick = function() {
+            audio.play();
+            modal.style.display = "none";
+        }
+
+        // Close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+</script>
+
 </body>
 </html>
