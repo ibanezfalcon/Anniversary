@@ -6,7 +6,7 @@
     <title>Our Love Story Timeline</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
+          body {
             font-family: 'Raleway', sans-serif;
             background: radial-gradient(circle, rgba(255, 154, 162, 1) 0%, rgba(250, 208, 196, 1) 100%);
             margin: 0;
@@ -19,16 +19,16 @@
 
         h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 48px;
+            font-size: 211%;
             color: #ff6f61;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
             margin-bottom: 10px;
             animation: fadeIn 1s ease-out;
         }
 
         h2 {
             font-family: 'Raleway', sans-serif;
-            font-size: 32px;
+            font-size: 27px;
             color: #333;
             margin-top: 0;
             margin-bottom: 40px;
@@ -71,6 +71,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             animation: fadeIn 1.5s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .timeline-item:nth-child(odd) {
@@ -87,23 +90,29 @@
             position: relative;
         }
 
-        .date {
+        .timeline-item img {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item .date {
             font-size: 24px;
             font-weight: 600;
             color: #ff6f61;
             margin-bottom: 10px;
             transition: color 0.3s ease;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
-        .month {
-            margin-right: 8px;
+        .timeline-item .date .month {
+            font-size: 20px;
+            margin-bottom: 5px;
         }
 
-        .year {
-            font-size: 20px;
+        .timeline-item .date .year {
+            font-size: 18px;
             color: #555;
         }
 
@@ -112,9 +121,11 @@
         }
 
         .timeline-item .description {
-            font-size: 18px;
-            line-height: 1.6;
+            font-size: 16px; /* Increase font size for better readability */
+            line-height: 1.6; /* Increase line height for better spacing */
             color: #555;
+            padding: 10px 0; /* Padding to ensure text does not touch edges */
+            text-align: center;
         }
 
         .timeline-item::after {
@@ -132,7 +143,7 @@
             margin-bottom: 30px;
             padding: 12px 24px;
             font-size: 20px;
-            background: #007bff;
+            background: transparent;
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -149,16 +160,23 @@
             transform: scale(1.05);
         }
 
+        .timeline-item .icon {
+            font-size: 30px;
+            color: #ff6f61;
+            margin-right: 15px;
+        }
+
         @media screen and (max-width: 600px) {
             .timeline-item {
                 width: 100%;
                 text-align: center;
                 margin: 10px 0;
                 border: none;
+                flex-direction: column;
+                align-items: center;
             }
 
-            .timeline-item:nth-child(odd)
-            
+            .timeline-item:nth-child(odd),
             .timeline-item:nth-child(even) {
                 float: none;
                 clear: none;
@@ -174,12 +192,12 @@
 
             .timeline-item img {
                 width: 50%;
-                height: 50%;
+                height: auto;
+                margin-bottom: 10px;
             }
 
             .date {
                 font-size: 18px;
-                flex-direction: column;
             }
 
             .month {
@@ -251,12 +269,56 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        .modal-content button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-content button:hover {
+            background-color: #e65c50;
+        }
+         /* Additional styles for navigation buttons */
+         .timeline-navigation {
+            margin: 20px 0;
+        }
+        .extra-content {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.expand-btn {
+    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.expand-btn:hover {
+    background-color: transparent;
+    color: black;
+}
+
+
     </style>
 </head>
 <body>
     <a href="steps.html" class="back-button">Back</a>
     <h1>Our Love Story</h1>
     <h2>Dan & Yelle</h2>
+   
+    
     <div class="timeline">
         <div class="timeline-item">
             <div class="date">
@@ -266,6 +328,11 @@
             <img src="talking.png" width="150" height="150" alt="Event 1">
             <div class="description">
                 Before I preached, we talked for the first time
+            </div>
+            <button class="expand-btn">View More</button>
+            <div class="extra-content">
+                <img src="extra1.jpg" width="150" height="150" alt="Extra Image 1">
+              
             </div>
         </div>
 
@@ -472,19 +539,12 @@
                 This is the month when we went to the floating restaurant and you said yes to my courtship
             </div>
         </div>
+       
+       
         <div class="timeline-item">
+           
             <div class="date">
-                <span class="month">July</span>
-                <span class="year">2023</span>
-            </div>
-            <img src="concert.png" height="120" width="120" alt="Event 4">
-            <div class="description">
-                This month is when you were going to say yes to my courtship, but it's also my mom’s birthday
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="date">
-                <span >Fast forward to 2024</span>
+              
                 <span class="month">January</span>
                 <span class="year">2023</span>
             </div>
@@ -504,10 +564,7 @@
             </div>
         </div>
     </div>
-    <!-- <audio src="MYMP - For All Of My Life (Official Lyric Video).mp3" autoplay loop>
-        Your browser does not support the audio element.
-    </audio> -->
- <!-- Modal for Audio -->
+   
  <div id="audioModal" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
@@ -551,6 +608,26 @@
                 modal.style.display = "none";
             }
         }
+
+      
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.expand-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const extraContent = this.nextElementSibling;
+                if (extraContent.style.display === 'block') {
+                    extraContent.style.display = 'none';
+                    this.textContent = 'View More';
+                } else {
+                    extraContent.style.display = 'block';
+                    this.textContent = 'View Less';
+                }
+            });
+        });
+    });
+
+
 </script>
 
 </body>
