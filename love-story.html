@@ -40,7 +40,7 @@
             position: relative;
             width: 90%;
             max-width: 900px;
-            margin: 0 auto;
+           
             padding: 20px;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
@@ -310,6 +310,105 @@
     color: black;
 }
 
+/* Enhanced Anniversary Modal Styles */
+#anniversaryModal .modal-content {
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    margin: 10% auto;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#anniversaryModal .modal-content h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    color: #ff6f61;
+    margin-bottom: 10px;
+    animation: zoomIn 1s ease-in-out;
+}
+
+#anniversaryModal .modal-content .highlight {
+    font-size: 1.5em;
+    color: #d9534f;
+    font-weight: bold;
+    margin: 20px 0;
+    animation: pulse 1.5s infinite;
+}
+
+#anniversaryModal .modal-footer {
+    margin-top: 20px;
+}
+
+#anniversaryModal .modal-button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#anniversaryModal .modal-button:hover {
+    background-color: #e65c50;
+}
+
+#anniversaryModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#anniversaryModal .close:hover,
+#anniversaryModal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
 
     </style>
 </head>
@@ -329,11 +428,7 @@
             <div class="description">
                 Before I preached, we talked for the first time
             </div>
-            <button class="expand-btn">View More</button>
-            <div class="extra-content">
-                <img src="extra1.jpg" width="150" height="150" alt="Extra Image 1">
-              
-            </div>
+         
         </div>
 
         <div class="timeline-item">
@@ -574,6 +669,19 @@
     </div>
 </div>
 
+<div id="anniversaryModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeAnniversaryModal">&times;</span>
+        <h2>Happy Anniversary!</h2>
+        <p class="highlight">Again, I love you.</p>
+        <div class="modal-footer">
+            <button class="modal-button" id="closeAnniversaryButton">Close</button>
+        </div>
+    </div>
+</div>
+
+
+
 <audio id="background-audio" src="MYMP - For All Of My Life (Official Lyric Video).mp3" loop>
     Your browser does not support the audio element.
 </audio>
@@ -626,6 +734,51 @@
             });
         });
     });
+
+   // Anniversary Modal
+var anniversaryModal = document.getElementById("anniversaryModal");
+var closeAnniversaryModal = document.getElementById("closeAnniversaryModal");
+var closeAnniversaryButton = document.getElementById("closeAnniversaryButton");
+
+// Function to check if user has scrolled to the bottom
+function checkScroll() {
+    const timeline = document.querySelector('.timeline');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const timelineHeight = timeline.offsetHeight;
+    const timelineTop = timeline.offsetTop;
+
+    if (scrollTop + windowHeight >= timelineTop + timelineHeight) {
+        anniversaryModal.style.display = "block";
+        autoCloseAnniversaryModal(); // Start the auto-close timer
+    }
+}
+function autoCloseAnniversaryModal() {
+    setTimeout(function() {
+        anniversaryModal.style.display = "none";
+    }, 5000); // 5000 milliseconds = 5 seconds
+}
+
+// Listen for scroll events
+window.addEventListener('scroll', checkScroll);
+
+// Close the anniversary modal
+closeAnniversaryModal.onclick = function() {
+    anniversaryModal.style.display = "none";
+}
+
+closeAnniversaryButton.onclick = function() {
+    anniversaryModal.style.display = "none";
+}
+
+// Close the anniversary modal if user clicks outside of it
+window.onclick = function(event) {
+    if (event.target == anniversaryModal) {
+        anniversaryModal.style.display = "none";
+    }
+}
+
+
 
 
 </script>
